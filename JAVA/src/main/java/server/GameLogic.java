@@ -6,13 +6,9 @@ public class GameLogic {
     private static final int SECRET_CODE = 1111;
     private final Random random = new Random();
 
-    public static Result validateGuess(String input) {
-        try {
-            int guess = Integer.parseInt(input); // Convert string to integer
-            return new Result(guess, null); // Return the guess and no error
-        } catch (NumberFormatException e) {
-            return new Result(-1, "Invalid input: Not a valid integer"); // Return error message
-        }
+    public static int validateGuess(String input) {
+        int guess = Integer.parseInt(input);
+        return guess;
     }
 
     public int generateSecretCode() {
