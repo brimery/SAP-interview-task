@@ -1,22 +1,35 @@
 package server;
 
-//import org.junit.jupiter.api.Test;
-//import static org.junit.jupiter.api.Assertions.*;
-
 class GameLogicTest {
     private final GameLogic gameLogic = new GameLogic();
 
-//    @Test
-//    void testValidateGuess() {
-//	/* Example inputs:
-//	valid: "007123", "1181", " 1022  "
-//	invalid: "$", "-15", " "
-//	*/
-//        assertEquals(10, gameLogic.validateGuess("1000"));
-//    }
+    public static void main(String[] args) {
+        GameLogicTest t = new GameLogicTest();
+        t.testValidateGuess_validInput();
+        t.testValidateGuess_tooShort();
+        System.out.println("All tests passed.");
+    }
 
-//    @Test
-//    void testGenerateSecretCode() {
-//        assertEquals(1111, gameLogic.generateCode());
-//    }
+    void testValidateGuess_validInput() {
+        int result = GameLogic.validateGuess("1234");
+        if (result != 1234) throw new AssertionError("expected 1234, got " + result);
+
+    }
+
+    void testValidateGuess_nullInput() {
+        assertThrows(IllegalArgumentException.class,
+                () -> GameLogic.validateGuess(null));
+    }
+
+
+
+    void testValidateGuess_tooShort() {
+        try {
+            GameLogic.validateGuess("123");
+            throw new AssertionError("expected IllegalArgumentException");
+        } catch (IllegalArgumentException ignored) { }
+    }
+
+
+
 }

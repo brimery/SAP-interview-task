@@ -20,7 +20,6 @@ class ClientHandler extends Thread {
             out.println("Welcome to the Code Breaker Game! Enter a code between 1000 and 9999.");
             String inputLine;
             int secretCode = gameLogic.generateSecretCode();
-
             while ((inputLine = in.readLine()) != null) {
                 try {
                     out.println("Enter your guess (secret code) or 'exit' to quit: ");
