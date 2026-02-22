@@ -17,8 +17,10 @@ class GameLogicTest {
     }
 
     void testValidateGuess_nullInput() {
-        assertThrows(IllegalArgumentException.class,
-                () -> GameLogic.validateGuess(null));
+        try {
+            GameLogic.validateGuess(null);
+            throw new AssertionError("expected IllegalArgumentException");
+        } catch (IllegalArgumentException ignored) { }
     }
 
 
